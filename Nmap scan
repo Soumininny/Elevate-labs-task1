@@ -1,0 +1,140 @@
+┌──(kali㉿kali)-[~]
+└─$ sudo apt install nmap      
+[sudo] password for kali: 
+nmap is already the newest version (7.95+dfsg-1kali1).
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 1488
+
+
+┌──(kali㉿kali)-[~]
+└─$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:d1:86:90 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.19.130/24 brd 192.168.19.255 scope global dynamic noprefixroute eth0
+       valid_lft 1274sec preferred_lft 1274sec
+    inet6 fe80::a3e6:96d1:1456:bc0d/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -sP 192.168.19.0/24
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-26 11:44 EDT
+Nmap scan report for 192.168.19.1
+Host is up (0.00033s latency).
+MAC Address: 00:50:56:C0:00:08 (VMware)
+Nmap scan report for 192.168.19.2
+Host is up (0.00015s latency).
+MAC Address: 00:50:56:F3:7D:0C (VMware)
+Nmap scan report for 192.168.19.254
+Host is up (0.00013s latency).
+MAC Address: 00:50:56:F0:32:10 (VMware)
+Nmap scan report for 192.168.19.130
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 2.15 seconds
+
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap 192.168.19.0/24    
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-26 11:44 EDT
+Nmap scan report for 192.168.19.1
+Host is up (0.00018s latency).
+Not shown: 999 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+7070/tcp open  realserver
+MAC Address: 00:50:56:C0:00:08 (VMware)
+
+Nmap scan report for 192.168.19.2
+Host is up (0.00014s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE
+53/tcp open  domain
+MAC Address: 00:50:56:F3:7D:0C (VMware)
+
+Nmap scan report for 192.168.19.254
+Host is up (0.00020s latency).
+All 1000 scanned ports on 192.168.19.254 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 00:50:56:F0:32:10 (VMware)
+
+Nmap scan report for 192.168.19.130
+Host is up (0.0000040s latency).
+All 1000 scanned ports on 192.168.19.130 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+
+Nmap done: 256 IP addresses (4 hosts up) scanned in 9.45 seconds
+
+
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -O 192.168.19.1    
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-26 11:45 EDT
+Nmap scan report for 192.168.19.1
+Host is up (0.00028s latency).
+Not shown: 999 filtered tcp ports (no-response)
+PORT     STATE SERVICE
+7070/tcp open  realserver
+MAC Address: 00:50:56:C0:00:08 (VMware)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose
+Running (JUST GUESSING): Microsoft Windows 11|10|2022 (92%), FreeBSD 6.X (88%)
+OS CPE: cpe:/o:microsoft:windows_11 cpe:/o:freebsd:freebsd:6.2 cpe:/o:microsoft:windows_10 cpe:/o:microsoft:windows_server_2022
+Aggressive OS guesses: Microsoft Windows 11 21H2 (92%), FreeBSD 6.2-RELEASE (88%), Microsoft Windows 10 (87%), Microsoft Windows Server 2022 (85%), Microsoft Windows 10 1607 (85%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 16.29 seconds
+
+
+
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -O 192.168.19.2  
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-26 11:45 EDT
+Nmap scan report for 192.168.19.2
+Host is up (0.0012s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE
+53/tcp open  domain
+MAC Address: 00:50:56:F3:7D:0C (VMware)
+Aggressive OS guesses: VMware Player virtual NAT device (99%), Microsoft Windows XP SP3 or Windows 7 or Windows Server 2012 (93%), Microsoft Windows XP SP3 (91%), DD-WRT v24-sp2 (Linux 2.4.37) (91%), Actiontec MI424WR-GEN3I WAP (91%), DVTel DVT-9540DW network camera (89%), Linux 3.2 (89%), Linux 4.4 (89%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 4.33 seconds
+                                                            
+
+
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -O 192.168.19.254
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-26 11:46 EDT
+Nmap scan report for 192.168.19.254
+Host is up (0.00035s latency).
+All 1000 scanned ports on 192.168.19.254 are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 00:50:56:F0:32:10 (VMware)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 25.95 seconds
+                                                             
+
+
+┌──(kali㉿kali)-[~]
+└─$ sudo nmap -O 192.168.19.130
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-05-26 11:46 EDT
+Nmap scan report for 192.168.19.130
+Host is up (0.00013s latency).
+All 1000 scanned ports on 192.168.19.130 are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 0 hops
+
+OS detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 1.83 seconds
+                                                                                            
